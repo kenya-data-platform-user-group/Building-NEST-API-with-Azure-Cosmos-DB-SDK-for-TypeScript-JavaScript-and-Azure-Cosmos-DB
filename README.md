@@ -1,54 +1,136 @@
-<p align="center">
+<p align="left" style="margin: 0px 10px 0px 0px;">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+<img src="image/README/1743345911598.png" width="120" alt="Small Icon" />
 </p>
 
-## Nest - Azure Cosmos DB CRUD App
+# NestJS with Azure Cosmos DB CRUD Application
 
-- Nestjs Framework
-- Azure
+A complete REST API example demonstrating CRUD operations using NestJS and Azure Cosmos DB.
 
-## Project Dependancies
+## Project Overview
+
+This application demonstrates how to:
+
+- Build a RESTful API with NestJS framework
+- Connect to Azure Cosmos DB using the official SDK
+- Implement CRUD operations with TypeScript
+- Handle configuration and environment variables
+- Implement proper error handling
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v20 or later)
+- [pnpm](https://pnpm.io/) (v9.7 or later) or npm v10 or later
+- An active Azure subscription with a Cosmos DB account
+
+## Environment Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd Nest-CosmosDB-CRUD
+   ```
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+   or
+
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the root directory with the following variables:
+
+   ```
+   PORT=3000
+   NODE_ENV=development
+   AZURE_COSMOS_DB_ENDPOINT=<your-cosmosdb-endpoint>
+   AZURE_COSMOS_DB_KEY=<your-cosmosdb-key>
+   COSMOSDB_DATABASE_NAME=<your-database-name>
+   ```
+
+## Project Dependencies
+
+The project uses the following main dependencies:
 
 ```bash
 pnpm add @nestjs/config @azure/cosmos uuid class-transformer class-validator @nestjs/mapped-types
 ```
 
-## Compile and run the project
+## Database Structure
+
+The application creates two containers in your Cosmos DB:
+
+- `users` - Stores user information
+- `memories` - Stores memory entries
+
+Both containers are created automatically when the application starts for the first time.
+
+## Running the Application
 
 ```bash
-# development
- pnpm run start
+# development mode
+pnpm run start
 
-# watch mode
- pnpm run start:dev
+# watch mode (recommended for development)
+pnpm run start:dev
 
 # production mode
- pnpm run start:prod
+pnpm run start:prod
 ```
 
-## Resources
+## API Endpoints
 
-Check out a few resources that may come in handy when working with NestJS:
+### Memories Resource
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+| Method | Endpoint      | Description                    |
+| ------ | ------------- | ------------------------------ |
+| GET    | /memories     | Get all memories               |
+| GET    | /memories/:id | Get a specific memory by ID    |
+| POST   | /memories     | Create a new memory            |
+| PATCH  | /memories/:id | Update a specific memory by ID |
+| DELETE | /memories/:id | Delete a specific memory by ID |
 
-## Support
+## Project Structure
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+src/
+├── app.module.ts             # Main application module
+├── main.ts                   # Application entry point
+├── http-exception.filter.ts  # Global exception filter
+├── database/                 # Database connection module
+│   └── database.service.ts   # Azure Cosmos DB service
+├── memories/                 # Memories module
+│   ├── dto/                  # Data Transfer Objects
+│   ├── memories.controller.ts # REST API controller
+│   └── memories.service.ts   # Business logic
+└── 
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Development Tools
 
-## License
+This project includes several development tools:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+* **ESLint** : Linting with TypeScript support
+
+```
+pnpm run
+```
+
+* **Prettier** : Code formatting
+
+```
+pnpm run format
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
