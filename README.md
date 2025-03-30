@@ -98,7 +98,8 @@ pnpm run start:prod
 
 ## Project Structure
 
-src/
+```bash
+src
 ├── app.module.ts             # Main application module
 ├── main.ts                   # Application entry point
 ├── http-exception.filter.ts  # Global exception filter
@@ -108,8 +109,8 @@ src/
 │   ├── dto/                  # Data Transfer Objects
 │   ├── memories.controller.ts # REST API controller
 │   └── memories.service.ts   # Business logic
-└── 
-
+└──
+```
 
 ## Development Tools
 
