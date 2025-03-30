@@ -6,6 +6,7 @@
 # NestJS with Azure Cosmos DB CRUD Application
 
 A complete REST API example demonstrating CRUD operations using NestJS and Azure Cosmos DB.
+[Youtube Video found here](https://www.youtube.com/watch?v=r9I5BXb9mNw)
 
 ## Project Overview
 
